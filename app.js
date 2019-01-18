@@ -1,10 +1,11 @@
+const mapboxKey = config["MAPBOX"];
 let myMap = L.map('mapid').setView([40.6946, -73.949], 12);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   maxZoom: 18,
   id: 'mapbox.streets',
-  accessToken: 'pk.eyJ1IjoiZGFuaWVsYnVydG9uIiwiYSI6ImNqcXpnajc4MTAybnI0NG1tOXo5Nm55dWUifQ.DPEZeklc_mPhpt_2aXz4SA'
+  accessToken: mapboxKey, 
   }).addTo(myMap);
 
 boroughInput = document.getElementById("boro");
