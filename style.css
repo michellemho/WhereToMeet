@@ -1,0 +1,23 @@
+body {
+  background-color:Seashell;
+  }
+
+#mapid {
+  float:left;
+  height:800px;
+  width:60%;
+  }
+
+#sidebar {
+  float:right;
+  padding-left:7px;
+  border:solid gray;
+  border-width:1px;
+  background-color:WhiteSmoke;
+  height:800px;
+  width:39%;
+  }
+
+p {
+  margin:8px;
+  }
