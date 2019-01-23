@@ -30,8 +30,8 @@ async function geocodeAddress(address, borough) {
   let query = `https://geosearch.planninglabs.nyc/v1/search?text=${address}, ${borough}`
   const response = await fetch(query);
   const myJson = await response.json();
-  return [myJson['features'][0]['geometry']['coordinates'][1],
-          myJson['features'][0]['geometry']['coordinates'][0]];
+  return [myJson['features'][0]['geometry']['coordinates'][0],
+          myJson['features'][0]['geometry']['coordinates'][1]];
 }
 
 
@@ -41,5 +41,5 @@ function addMarker(long, lat) {
   }
 
 function geocodeAndDraw(address, borough){
-  return geocodeAddress(address, borough).then(latLong => {addMarker(latLong[1], latLong[0])})
+  return geocodeAddress(address, borough).then(latLong => {addMarker(latLong[0], latLong[1])})
 }
