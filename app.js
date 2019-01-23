@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-mapboxgl.accessToken = mapbox_key
+const mapboxKey = config["MAPBOX"];
 
 var myMap = new mapboxgl.Map({
   container: 'mapid',
@@ -7,17 +6,6 @@ var myMap = new mapboxgl.Map({
   center: [-73.949,40.6946],
   zoom: 10
 });
-=======
-const mapboxKey = config["MAPBOX"];
-let myMap = L.map('mapid').setView([40.6946, -73.949], 12);
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox.streets',
-  accessToken: mapboxKey, 
-  }).addTo(myMap);
->>>>>>> 09e3b6b8576ff49e32094829221e36bb61c5087a
 
 boroughInput = document.getElementById("boro");
 addressInput = document.getElementById("address");
