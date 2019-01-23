@@ -1,4 +1,4 @@
-const mapboxKey = config["MAPBOX"];
+mapboxgl.accessToken = config["MAPBOX"];
 
 var myMap = new mapboxgl.Map({
   container: 'mapid',
@@ -17,20 +17,12 @@ document.getElementById("submit").addEventListener("click", function() {
   geocodeAndDraw(address, borough);
   });
 
-async function getJSON(url){
-  output = await fetch(url)
-  .then(function(response) {
-    return response.json();
-  })
-  return output
-}
-
 async function geocodeAddress(address, borough) {
   let query = `https://geosearch.planninglabs.nyc/v1/search?text=${address}, ${borough}`
   const response = await fetch(query);
-  const myJson = await response.json();
-  return [myJson['features'][0]['geometry']['coordinates'][0],
-          myJson['features'][0]['geometry']['coordinates'][1]];
+  return await response.json();
+  //return [myJson['features'][0]['geometry']['coordinates'][0],
+  //        myJson['features'][0]['geometry']['coordinates'][1]];
 }
 
 
@@ -41,5 +33,13 @@ function addMarker(long, lat) {
   }
 
 function geocodeAndDraw(address, borough){
-  return geocodeAddress(address, borough).then(latLong => {addMarker(latLong[0], latLong[1])})
+  return geocodeAddress(address, borough).then(
+    function(response) {
+      let long = response['features'][0]['geometry']['coordinates'][1];
+      let lat = response['features'][0]['geometry']['coordinates'][0];
+      let fullName = `${response['features'][0]['properties']['name']}, ${response['features'][0]['properties']['borough']}, NYC`;
+      addMarker(lat, long);
+      console.log(fullName);
+      //latLong => {addMarker(latLong[0], latLong[1])})
+    });
 }
