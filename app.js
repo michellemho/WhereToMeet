@@ -43,8 +43,3 @@ function addMarker(long, lat) {
 function geocodeAndDraw(address, borough){
   return geocodeAddress(address, borough).then(latLong => {addMarker(latLong[0], latLong[1])})
 }
-<<<<<<< HEAD
-
-// function getIsochrones()
-=======
->>>>>>> 09e3b6b8576ff49e32094829221e36bb61c5087a
