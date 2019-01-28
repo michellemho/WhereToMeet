@@ -7,8 +7,8 @@ var myMap = new mapboxgl.Map({
   zoom: 10
 });
 
-boroughInput = document.getElementById("boro");
-addressInput = document.getElementById("address");
+const boroughInput = document.getElementById("boro");
+const addressInput = document.getElementById("addressInput");
 
 
 document.getElementById("submit").addEventListener("click", function() {
@@ -41,5 +41,34 @@ function geocodeAndDraw(address, borough){
       addMarker(lat, long);
       console.log(fullName);
       //latLong => {addMarker(latLong[0], latLong[1])})
+      addRow(fullName);
+      return [fullName, response]
     });
 }
+
+const addressList = document.getElementById("addresses");
+
+function addRow(name) {
+  addressList.style.border = "1px solid gray";
+
+  let newRow = document.createElement("div");
+  newRow.setAttribute("class", "listElement");
+
+  let address = document.createElement("p");
+  address.setAttribute("class", "addressText");
+  address.textContent = name;
+
+  let xBox = document.createElement("button");
+  xBox.setAttribute("class", "listX");
+  xBox.textContent = "X";
+  xBox.addEventListener("click", function(e) {removeRow(e)});
+
+  newRow.appendChild(address);
+  newRow.appendChild(xBox);
+  addressList.appendChild(newRow);
+  }
+  
+function removeRow(e) {
+}
+
+
